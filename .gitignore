@@ -1,7 +1,7 @@
 .venv/
-reddit/
-torrent/
-tmp_*
+server/reddit/
+server/torrent/
+server/tmp_*
 
 
 

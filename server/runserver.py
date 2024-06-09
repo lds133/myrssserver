@@ -138,4 +138,5 @@ if __name__ == "__main__":
     
     
     
-    run(addr="192.168.30.9", port=33331)
+    #run(addr="192.168.30.9", port=33331)
+    run(addr="localhost", port=33331)

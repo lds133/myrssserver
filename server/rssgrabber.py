@@ -8,7 +8,7 @@ import traceback
 from datetime import datetime
 
 
-FULL_CYCLE_MINUTES = 10
+FULL_CYCLE_MINUTES = 30
 
 RSS_THREAD = None
 

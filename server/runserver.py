@@ -4,9 +4,8 @@ import os
 import json
 from http.server import HTTPServer, BaseHTTPRequestHandler, ThreadingHTTPServer
 
-from sqlread import SQLRead
-
 from rssgrabber import RSS_READ_TAB, run_rssgrabber
+import copy
 
 
 
@@ -28,16 +27,11 @@ class S(BaseHTTPRequestHandler):
     
     
     
-    file_tab = [    ("index.html"                         , "text/html"                , None ), 
-                                                          
-                                                                                        
-                    ("favicon.ico"                        , "image/x-icon"             , 'static' ),
-                                                          
-                    
-                    #("torrents_news.xml"                  , "application/atom+xml" ,     "torrent" ), 
-                                                          
-                    
-                ]
+    file_tab_init = [    ("index.html"                         , "text/html"                , None ), 
+                         ("site.css"                           , "text/css"                 , 'static' ),
+                         ("favicon.ico"                        , "image/x-icon"             , 'static' ),
+                         ("serverapi.js"                       , "text/javascript"          , 'static' ),
+                    ]
 
 
     def IntegrateRSS(self):
@@ -48,8 +42,8 @@ class S(BaseHTTPRequestHandler):
 
 
     def __init__(self, *args, **kwargs):
+        self.file_tab = copy.copy(self.file_tab_init)
         self.IntegrateRSS()
-        run_rssgrabber()
         super().__init__(*args, **kwargs)
 
         
@@ -63,6 +57,7 @@ class S(BaseHTTPRequestHandler):
 
 
         if (not os.path.exists(filename)):
+            print("File not found: "+filename)
             self.send_error(404)
             return 
 
@@ -122,10 +117,13 @@ class S(BaseHTTPRequestHandler):
 
 
 def run(server_class=ThreadingHTTPServer, handler_class=S, addr="localhost", port=8000):
+
+    run_rssgrabber()
+
     server_address = (addr, port)
     httpd = server_class(server_address, handler_class)
 
-    print(f"Starting httpd server on {addr}:{port}")
+    print("Starting httpd server on %s:%i" % (addr,port) )
     httpd.serve_forever()
 
 
@@ -140,4 +138,4 @@ if __name__ == "__main__":
     
     
     
-    run(addr="192.168.0.30", port=33331)
+    run(addr="192.168.30.9", port=33331)

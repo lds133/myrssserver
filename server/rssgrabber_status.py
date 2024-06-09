@@ -9,7 +9,8 @@ from rssgrabber_base import RSSGetFileInfo,MDTextStatus
 
 class MDGrabberStatus(RSSGetFileInfo,MDTextStatus):
 
-
+    GLOBALID = "$$$"
+    LF="\r\n"
 
     def __init__(self):
         super().__init__()
@@ -17,21 +18,26 @@ class MDGrabberStatus(RSSGetFileInfo,MDTextStatus):
         self.rawfilename =  "tmp_grabberstatus.md"
         self.dir = None
         self.texts = {}
+        self.is_save_rss = True
         
         
     def MDTextReset(self,id:str):
         self.texts[id] = "" 
         
     def MDTextAdd(self,id:str,text:str):
-        self.texts[id] += "\r\n"+text 
+        self.texts[id] += text + self.LF
         
         
     def MDTextSave(self):
-        mdtext = "# MDGrabberStatus"
+        mdtext = "# MDGrabberStatus"+self.LF
+        mdtext+=self.texts[self.GLOBALID]+self.LF
+        mdtext+=self.LF+self.LF
+        
         for id in self.texts.keys():
-            mdtext+="## "+id+"\r\n"
-            mdtext+=self.texts[id]+"\r\n"
-            mdtext+="&nbsp;\r\n"
+            if id!=self.GLOBALID:
+                mdtext+="## "+id+self.LF
+                mdtext+=self.texts[id]+self.LF
+                mdtext+=self.LF+self.LF
             
         filepath =  self.rawfilename if  self.dir==None else os.path.join(self.dir,self.rawfilename)
         

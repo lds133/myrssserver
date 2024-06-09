@@ -9,11 +9,12 @@ class RSSGetFileInfo():
         self.mimetypestr = None
         self.rawfilename =  None
         self.dir = None
-        
-        
+        self.grabberid = None
+        self.is_save_rss = False
         
         
 class MDTextStatus():
+
 
     def MDTextReset(self,id:str):
         pass

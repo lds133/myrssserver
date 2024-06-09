@@ -7,7 +7,7 @@
 ./makevenv.sh 
 ```
 
-### Debug 
+#### Debug 
 ```
 source .venv/bin/activate
 ```
@@ -16,11 +16,15 @@ source .venv/bin/activate
 ## 2. Run
 
 ```
+cd server
+```
+
+```
 .venv/bin/python runserver.py
 ```
 
 
-### Debug 
+#### Debug 
 ```
 .venv/bin/python rssgrabber.py
 ```

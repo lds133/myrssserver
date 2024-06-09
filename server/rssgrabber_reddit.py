@@ -28,6 +28,7 @@ class RSSGetReddit(RSSGet):
         
         
     def __init__(self, subredditname:str ):
+        self.subredditname = subredditname
         super().__init__( RSSGetReddit.URL, '/r/'+subredditname+'/.rss', 'rss_'+subredditname )
 
 
@@ -52,11 +53,11 @@ class RSSGrabReddit(RSSGrab):
         
     def GrabUnsafe(self,rss:RSSGet):
         with requests.Session() as s:            
-            self.MDAdd("Reading "+rss.path)
+            self.MDAdd("Reading ["+rss.subredditname+"]("+rss.URL+rss.path+")" )
             r = s.get(rss.url, headers=rss.req_headers)
         
         if (rss.is_save_rss):
-            self.MDAdd("Writing "+rss.filename)
+            self.MDAdd("Writing ["+rss.filename+"]("+rss.rawfilename+")")
             with open(rss.xmlfilename, 'w', encoding='utf-8') as f:
                 f.write(r.text)
         if (rss.is_save_headers):

@@ -1,0 +1,13 @@
+beautifulsoup4==4.12.3
+certifi==2024.6.2
+charset-normalizer==3.3.2
+cinemagoer==2023.5.1
+greenlet==3.0.3
+idna==3.7
+IMDbPY==2022.7.9
+lxml==5.2.2
+requests==2.32.3
+soupsieve==2.5
+SQLAlchemy==2.0.30
+typing-extensions==4.12.2
+urllib3==2.2.1

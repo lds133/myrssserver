@@ -1,0 +1,17 @@
+[Unit]
+Description=My RSS Server and Grabber
+After=network.target
+
+[Service]
+User=nuc
+Group=nuc
+WorkingDirectory=/home/nuc/MYPROJ/myrssserver/server
+Environment="PATH=/home/nuc/MYPROJ/myrssserver/.venv/bin"
+ExecStart=/home/nuc/MYPROJ/myrssserver/.venv/bin/python3 runserver.py
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

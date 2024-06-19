@@ -58,3 +58,28 @@ edit config.yml in the  /etc/cloudflared  folder
 sudo systemctl restart cloudflared
 ```
 
+
+
+## 4. Service
+
+
+Update the myrssserver.service file (now configured for the NUC)
+
+```
+sudo cp myrssserver.service  /etc/systemd/system/myrssserver.service
+```
+
+```
+sudo systemctl enable myrssserver
+```
+
+```
+sudo systemctl start myrssserver
+
+sudo systemctl stop myrssserver
+
+sudo systemctl restart myrssserver
+```
+
+
+

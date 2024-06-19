@@ -61,8 +61,8 @@ class RSSGrabTorrent(RSSGrab):
     TITLE = 'torrent'
 
     def __init__(self):
-        print('Collect torrent news')
-        
+        #print('Collect torrent news')
+        pass
         
         
     def Title(self):

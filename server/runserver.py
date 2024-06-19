@@ -9,17 +9,6 @@ import copy
 
 
 
-#http://94.158.81.18:33331/rss_tjournal_refugees.xml
-#http://94.158.81.18:33331/rss_poland.xml     
-#http://94.158.81.18:33331/rss_ukraine.xml          
-#http://94.158.81.18:33331/rss_learnpolish.xml     
-#http://94.158.81.18:33331/rss_warsaw.xml         
-
-
-
-
-
-
 
 
 class S(BaseHTTPRequestHandler):
